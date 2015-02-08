@@ -34,7 +34,7 @@ header:before {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url("letters.png") no-repeat;
+  background: url("../images/letters.png") no-repeat;
   background-size: cover
 }
 
