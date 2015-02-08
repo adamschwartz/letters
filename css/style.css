@@ -1,0 +1,178 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px
+}
+
+*, *:before, *:after {
+  box-sizing: border-box
+}
+
+body {
+  font-size: 1em;
+  margin: 0;
+  font-family: Gill Sans, sans-serif;
+  color: #424242
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: .75em
+  }
+}
+
+header {
+  position: relative;
+  height: 0;
+  padding-bottom: 53.5%
+}
+
+header:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("letters.png") no-repeat;
+  background-size: cover
+}
+
+header h1, header, h2 {
+  -webkit-user-select: none;
+  margin: 0;
+  height: 0;
+  color: transparent
+}
+
+h1, h2, h3 {
+  font-weight: normal
+}
+
+code, pre {
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace
+}
+
+pre {
+  display: inline-block;
+  max-width: 100%;
+  text-align: left;
+  background-color: #eee;
+  color: #777;
+  padding: .5em .7em;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  font-size: .8em;
+  line-height: 1.71em;
+  white-space: pre;
+  word-wrap: normal
+}
+
+section {
+  text-align: center;
+  width: 40em;
+  max-width: 100%;
+  margin: 5em auto
+}
+
+section:last-of-type {
+  margin-bottom: 0
+}
+
+section pre {
+  margin-bottom: 0
+}
+
+section h3 {
+  font-size: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-bottom: 2em
+}
+
+section h3:after {
+  content: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+  display: block;
+  overflow: hidden;
+  margin: 5em auto 0;
+  font-size: 5px;
+  letter-spacing: .5em;
+  text-indent: .5em;
+  color: #e0e0e0
+}
+
+section .canvas-wrapper {
+  position: relative;
+  display: inline-block
+}
+
+section canvas {
+  display: block;
+  margin: auto
+}
+
+@media (min-width: 800px) {
+  section canvas {
+    border-radius: 5px
+  }
+}
+
+section canvas:not(.has-letters-drawn) {
+  background: #eee
+}
+
+section .canvas-wrapper button {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1em;
+  color: #777;
+  border: 0;
+  -webkit-appearance: none;
+  background: transparent;
+  font-family: inherit
+}
+
+section .canvas-wrapper button.has-been-clicked-once {
+  opacity: 0
+}
+
+footer {
+  margin-top: 5em;
+  padding: 5em 1em;
+  color: #888;
+  background: #eee;
+  text-align: center
+}
+
+footer p {
+  font-size: 1.5em;
+  margin-bottom: 3em
+}
+
+footer p:last-child {
+  margin-bottom: 0
+}
+
+footer p a {
+  text-decoration: none;
+}
+
+footer p a.button {
+  font-size: .75em;
+  padding: .6em 1em;
+  border-radius: 5px;
+  font-size: 1.5em;
+  background-color: #ccc;
+  color: #555;
+  border: 0;
+  -webkit-appearance: none;
+  font-family: inherit
+}
+
+footer p a:not(.button) {
+  color: inherit
+}
