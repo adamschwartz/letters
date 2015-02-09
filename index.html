@@ -185,6 +185,25 @@ Letters.draw(canvas, 50000, { letter: function() {
           <p><a href="http://twitter.com/adamfschwartz">@adamfschwartz</a></p>
         </footer>
 
+        <script>
+          if (window.devicePixelRatio) {
+            Array.prototype.forEach.call(document.getElementsByClassName('canvas'), function(){
+              var width, height;
+
+              width = this.width;
+              height = this.height;
+
+              canvas.width = width * window.devicePixelRatio;
+              canvas.height = height * window.devicePixelRatio;
+
+              canvas.style.width = width + 'px';
+              canvas.style.height = height + 'px';
+
+              canvas.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio)
+            });
+          }
+        </script>
+
         <script src="letters.js"></script>
     </body>
 </html>
