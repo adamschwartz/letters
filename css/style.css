@@ -18,6 +18,10 @@ body {
   body {
     font-size: .75em
   }
+
+  .desktop-only {
+    display: none
+  }
 }
 
 header {
@@ -36,6 +40,13 @@ header:before {
   left: 0;
   background: url("../images/letters.png") no-repeat;
   background-size: cover
+}
+
+@media (max-width: 800px) {
+  header:before {
+    background-size: 200% 200%;
+    background-position: 50% 21%
+  }
 }
 
 header h1, header, h2 {
