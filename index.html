@@ -1,91 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Letters by Adam Schwartz</title>
+  <head>
+    <meta charset="utf-8">
+    <title>Letters by Adam Schwartz</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-        <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <header>
-          <h1>Letters</h1>
-          <h2>By Adam Schwartz</h2>
-        </header>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Letters</h1>
+      <h2>By Adam Schwartz</h2>
+    </header>
 
-        <section>
-          <h3>Basic usage</h3>
-          <div class="canvas-wrapper">
-            <canvas id="exampleBasic" width="250" height="250"></canvas>
-            <button for="exampleBasic">Click to run</button>
-          </div>
-          <br>
-          <pre><code>Letters.draw(canvas, 1000)</code></pre>
-          <script>
-            document.querySelector('button[for="exampleBasic"]').addEventListener('click', function(){
-              exampleBasic.className = 'has-letters-drawn';
-              this.className = 'has-been-clicked-once';
+    <section>
+      <h3>Basic usage</h3>
+      <div class="canvas-wrapper">
+        <canvas id="exampleBasic" width="250" height="250"></canvas>
+        <button for="exampleBasic">Click to run</button>
+      </div>
+      <br>
+      <pre><code>Letters.draw(canvas, 1000)</code></pre>
+      <script>
+        document.querySelector('button[for="exampleBasic"]').addEventListener('click', function(){
+          exampleBasic.className = 'has-letters-drawn';
+          this.className = 'has-been-clicked-once';
 
-              Letters.draw(exampleBasic, 1000)
-            });
-          </script>
-        </section>
+          Letters.draw(exampleBasic, 1000)
+        });
+      </script>
+    </section>
 
-        <section>
-          <h3>Drawing custom letters</h3>
-          <div class="canvas-wrapper">
-            <canvas id="exampleCustomText" width="250" height="250"></canvas>
-            <button for="exampleCustomText">Click to run</button>
-          </div>
-          <br>
-          <pre><code>Letters.draw(canvas, 1000, { letter: function() {
+    <section>
+      <h3>Drawing custom letters</h3>
+      <div class="canvas-wrapper">
+        <canvas id="exampleCustomText" width="250" height="250"></canvas>
+        <button for="exampleCustomText">Click to run</button>
+      </div>
+      <br>
+      <pre><code>Letters.draw(canvas, 1000, { letter: function() {
   return Math.random() > .5 ? '★' : '→'
 }})</code></pre>
-          <script>
-            document.querySelector('button[for="exampleCustomText"]').addEventListener('click', function(){
-              exampleCustomText.className = 'has-letters-drawn';
-              this.className = 'has-been-clicked-once';
+      <script>
+        document.querySelector('button[for="exampleCustomText"]').addEventListener('click', function(){
+          exampleCustomText.className = 'has-letters-drawn';
+          this.className = 'has-been-clicked-once';
 
-              Letters.draw(exampleCustomText, 1000, { letter: function() {
-                return Math.random() > .5 ? '★' : '→'
-              }})
-            });
-          </script>
-        </section>
+          Letters.draw(exampleCustomText, 1000, { letter: function() {
+            return Math.random() > .5 ? '★' : '→'
+          }})
+        });
+      </script>
+    </section>
 
-        <section>
-          <h3>Drawing in color</h3>
-          <div class="canvas-wrapper">
-            <canvas id="exampleCustomColors" width="250" height="250"></canvas>
-            <button for="exampleCustomColors">Click to run</button>
-          </div>
-          <br>
-          <pre><code>Letters.draw(canvas, 1000, { color: function(){
+    <section>
+      <h3>Drawing in color</h3>
+      <div class="canvas-wrapper">
+        <canvas id="exampleCustomColors" width="250" height="250"></canvas>
+        <button for="exampleCustomColors">Click to run</button>
+      </div>
+      <br>
+      <pre><code>Letters.draw(canvas, 1000, { color: function(){
   return 'rgb(' + Math.floor(255 * Math.random()) + ', 0, 0)'
 }})</code></pre>
-          <script>
-            document.querySelector('button[for="exampleCustomColors"]').addEventListener('click', function(){
-              exampleCustomColors.className = 'has-letters-drawn';
-              this.className = 'has-been-clicked-once';
+      <script>
+        document.querySelector('button[for="exampleCustomColors"]').addEventListener('click', function(){
+          exampleCustomColors.className = 'has-letters-drawn';
+          this.className = 'has-been-clicked-once';
 
-              Letters.draw(exampleCustomColors, 1000, { color: function(){
-                return 'rgb(' + Math.floor(255 * Math.random()) + ', 0, 0)'
-              }})
-            });
-          </script>
-        </section>
+          Letters.draw(exampleCustomColors, 1000, { color: function(){
+            return 'rgb(' + Math.floor(255 * Math.random()) + ', 0, 0)'
+          }})
+        });
+      </script>
+    </section>
 
-        <section>
-          <h3>Animate drawing</h3>
-          <div class="canvas-wrapper">
-            <canvas id="exampleAnimated" width="250" height="250"></canvas>
-            <button for="exampleAnimated">Click to run</button>
-          </div>
-          <br>
-          <pre><code>runs = 0;
+    <section>
+      <h3>Animate drawing</h3>
+      <div class="canvas-wrapper">
+        <canvas id="exampleAnimated" width="250" height="250"></canvas>
+        <button for="exampleAnimated">Click to run</button>
+      </div>
+      <br>
+      <pre><code>runs = 0;
 interval = setInterval(function(){
   Letters.draw(canvas, 1);
 
@@ -94,38 +94,38 @@ interval = setInterval(function(){
     clearInterval(interval)
   }
 })</code></pre>
-          <script>
-            (function(){
-              var interval;
-              document.querySelector('button[for="exampleAnimated"]').addEventListener('click', function(){
-                exampleAnimated.className = 'has-letters-drawn';
-                this.className = 'has-been-clicked-once';
+      <script>
+        (function(){
+          var interval;
+          document.querySelector('button[for="exampleAnimated"]').addEventListener('click', function(){
+            exampleAnimated.className = 'has-letters-drawn';
+            this.className = 'has-been-clicked-once';
 
-                exampleAnimated.getContext('2d').clearRect(0, 0, exampleAnimated.width, exampleAnimated.height);
+            exampleAnimated.getContext('2d').clearRect(0, 0, exampleAnimated.width, exampleAnimated.height);
 
-                var runs = 0;
-                clearInterval(interval);
-                interval = setInterval(function(){
-                  Letters.draw(exampleAnimated, 1);
+            var runs = 0;
+            clearInterval(interval);
+            interval = setInterval(function(){
+              Letters.draw(exampleAnimated, 1);
 
-                  runs += 1;
-                  if (runs > 500) {
-                    clearInterval(interval)
-                  }
-                })
-              });
-            })();
-          </script>
-        </section>
+              runs += 1;
+              if (runs > 500) {
+                clearInterval(interval)
+              }
+            })
+          });
+        })();
+      </script>
+    </section>
 
-        <section class="desktop-only">
-          <h3>Drawing around objects</h3>
-          <div class="canvas-wrapper">
-            <canvas id="exampleCustom" width="550" height="100"></canvas>
-            <button for="exampleCustom">Click to run<br>(Takes a few seconds)</button>
-          </div>
-          <br>
-          <pre><code>text = 'LETTERS';
+    <section class="desktop-only">
+      <h3>Drawing around objects</h3>
+      <div class="canvas-wrapper">
+        <canvas id="exampleCustom" width="550" height="100"></canvas>
+        <button for="exampleCustom">Click to run<br>(Takes a few seconds)</button>
+      </div>
+      <br>
+      <pre><code>text = 'LETTERS';
 
 context.fillStyle = '#fff';
 context.globalCompositeOperation = 'source-over';
@@ -145,63 +145,63 @@ context.globalCompositeOperation = 'source-over';
 Letters.draw(canvas, 50000, { letter: function() {
   return text[Math.floor(Math.random() * text.length)]
 }})</code></pre>
-          <script>
-            document.querySelector('button[for="exampleCustom"]').addEventListener('click', function(){
-              exampleCustom.className = 'has-letters-drawn';
-              this.className = 'has-been-clicked-once';
+      <script>
+        document.querySelector('button[for="exampleCustom"]').addEventListener('click', function(){
+          exampleCustom.className = 'has-letters-drawn';
+          this.className = 'has-been-clicked-once';
 
-              exampleCustom.getContext('2d').clearRect(0, 0, exampleAnimated.width, exampleAnimated.height);
+          exampleCustom.getContext('2d').clearRect(0, 0, exampleAnimated.width, exampleAnimated.height);
 
-              var context, fontSize, text;
+          var context, fontSize, text;
 
-              text = 'LETTERS';
+          text = 'LETTERS';
 
-              context = exampleCustom.getContext('2d');
-              fontSize = 100;
+          context = exampleCustom.getContext('2d');
+          fontSize = 100;
 
-              context.fillStyle = '#fff';
-              context.globalCompositeOperation = 'source-over';
-              context.fillRect(0, 0, exampleCustom.width, exampleCustom.height);
+          context.fillStyle = '#fff';
+          context.globalCompositeOperation = 'source-over';
+          context.fillRect(0, 0, exampleCustom.width, exampleCustom.height);
 
-              context.globalCompositeOperation = 'destination-out';
-              context.font = 'bold ' + fontSize + 'px/normal "Gill Sans"';
-              context.textBaseline = 'top';
-              context.fillText(text,
-                (exampleCustom.width - context.measureText(text).width) / 2,
-                (exampleCustom.height - (fontSize * 1.17)) / 2
-              );
+          context.globalCompositeOperation = 'destination-out';
+          context.font = 'bold ' + fontSize + 'px/normal "Gill Sans"';
+          context.textBaseline = 'top';
+          context.fillText(text,
+            (exampleCustom.width - context.measureText(text).width) / 2,
+            (exampleCustom.height - (fontSize * 1.17)) / 2
+          );
 
-              context.fillStyle = '#000';
-              context.globalCompositeOperation = 'source-over';
-              Letters.draw(exampleCustom, 50000, { letter: function() {
-                return text[Math.floor(Math.random() * text.length)]
-              }})
-            });
-          </script>
-        </section>
+          context.fillStyle = '#000';
+          context.globalCompositeOperation = 'source-over';
+          Letters.draw(exampleCustom, 50000, { letter: function() {
+            return text[Math.floor(Math.random() * text.length)]
+          }})
+        });
+      </script>
+    </section>
 
-        <footer>
-          <p><a class="button" href="http://github.com/adamschwartz/letters">Star on GitHub →</a></p>
-          <p><a href="http://twitter.com/adamfschwartz">@adamfschwartz</a></p>
-        </footer>
+    <footer>
+      <p><a class="button" href="http://github.com/adamschwartz/letters">Star on GitHub →</a></p>
+      <p><a href="http://twitter.com/adamfschwartz">@adamfschwartz</a></p>
+    </footer>
 
-        <script>
-          if (window.devicePixelRatio) {
-            Array.prototype.forEach.call(document.getElementsByTagName('canvas'), function(canvas){
-              var width, height;
+    <script>
+      if (window.devicePixelRatio) {
+        Array.prototype.forEach.call(document.getElementsByTagName('canvas'), function(canvas){
+          var width, height;
 
-              width = canvas.width;
-              height = canvas.height;
+          width = canvas.width;
+          height = canvas.height;
 
-              canvas.width = width * window.devicePixelRatio;
-              canvas.height = height * window.devicePixelRatio;
+          canvas.width = width * window.devicePixelRatio;
+          canvas.height = height * window.devicePixelRatio;
 
-              canvas.style.width = width + 'px';
-              canvas.style.height = height + 'px'
-            });
-          }
-        </script>
+          canvas.style.width = width + 'px';
+          canvas.style.height = height + 'px'
+        });
+      }
+    </script>
 
-        <script src="letters.js"></script>
-    </body>
+    <script src="letters.js"></script>
+  </body>
 </html>
