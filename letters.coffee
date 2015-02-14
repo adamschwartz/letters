@@ -56,8 +56,10 @@ drawLetter = (canvas, context, textFn, colorFn, fontFn, x, y) ->
   while i < pixels
     if oldDataData[i + 3] > 0 and (newData[i + 3] != oldDataData[i + 3] or newData[i + 2] != oldDataData[i + 2] or newData[i + 1] != oldDataData[i + 1] or newData[i] != oldDataData[i])
       context.putImageData bufferContext.getImageData(0, 0, xMax - xMin, yMax - yMin), xMin, yMin
-      break
+      return false
     i += 4
+
+  return true
 
 window.Letters =
   draw: (canvas, numberOfDrawAttempts, options = {}) ->
@@ -74,8 +76,16 @@ window.Letters =
     context.fontStretch = 1
     context.angle = 0
 
-    for i in [0..numberOfDrawAttempts]
+    numberSuccessfullyDrawn = 0
+
+    for i in [1..numberOfDrawAttempts]
       x = Math.floor Math.random() * width
       y = Math.floor Math.random() * height
 
-      drawLetter canvas, context, letter, color, font, x, y
+      wasDrawn = drawLetter canvas, context, letter, color, font, x, y
+      numberSuccessfullyDrawn += 1 if wasDrawn
+
+    if numberOfDrawAttempts is 1
+      return wasDrawn
+
+    return numberSuccessfullyDrawn

@@ -29,7 +29,7 @@
   };
 
   drawLetter = function(canvas, context, textFn, colorFn, fontFn, x, y) {
-    var collision, fontFamily, fontSize, fontWeight, i, newData, oldData, oldDataData, padding, pixels, text, textHeight, textWidth, xMax, xMin, yMax, yMin, _ref, _results;
+    var collision, fontFamily, fontSize, fontWeight, i, newData, oldData, oldDataData, padding, pixels, text, textHeight, textWidth, xMax, xMin, yMax, yMin, _ref;
     context.fillStyle = colorFn();
     text = textFn();
     _ref = fontFn(), fontWeight = _ref.fontWeight, fontSize = _ref.fontSize, fontFamily = _ref.fontFamily;
@@ -54,20 +54,19 @@
     newData = (context.getImageData(xMin, yMin, xMax - xMin, yMax - yMin)).data;
     i = 0;
     pixels = oldData.data.length;
-    _results = [];
     while (i < pixels) {
       if (oldDataData[i + 3] > 0 && (newData[i + 3] !== oldDataData[i + 3] || newData[i + 2] !== oldDataData[i + 2] || newData[i + 1] !== oldDataData[i + 1] || newData[i] !== oldDataData[i])) {
         context.putImageData(bufferContext.getImageData(0, 0, xMax - xMin, yMax - yMin), xMin, yMin);
-        break;
+        return false;
       }
-      _results.push(i += 4);
+      i += 4;
     }
-    return _results;
+    return true;
   };
 
   window.Letters = {
     draw: function(canvas, numberOfDrawAttempts, options) {
-      var color, context, font, height, i, letter, width, x, y, _i, _results;
+      var color, context, font, height, i, letter, numberSuccessfullyDrawn, wasDrawn, width, x, y, _i;
       if (options == null) {
         options = {};
       }
@@ -81,13 +80,19 @@
       context.textAlign = 'start';
       context.fontStretch = 1;
       context.angle = 0;
-      _results = [];
-      for (i = _i = 0; 0 <= numberOfDrawAttempts ? _i <= numberOfDrawAttempts : _i >= numberOfDrawAttempts; i = 0 <= numberOfDrawAttempts ? ++_i : --_i) {
+      numberSuccessfullyDrawn = 0;
+      for (i = _i = 1; 1 <= numberOfDrawAttempts ? _i <= numberOfDrawAttempts : _i >= numberOfDrawAttempts; i = 1 <= numberOfDrawAttempts ? ++_i : --_i) {
         x = Math.floor(Math.random() * width);
         y = Math.floor(Math.random() * height);
-        _results.push(drawLetter(canvas, context, letter, color, font, x, y));
+        wasDrawn = drawLetter(canvas, context, letter, color, font, x, y);
+        if (wasDrawn) {
+          numberSuccessfullyDrawn += 1;
+        }
       }
-      return _results;
+      if (numberOfDrawAttempts === 1) {
+        return wasDrawn;
+      }
+      return numberSuccessfullyDrawn;
     }
   };
 
