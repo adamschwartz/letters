@@ -1,17 +1,33 @@
-html {
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px
-}
-
 *, *:before, *:after {
   box-sizing: border-box
+}
+
+html {
+  font-family: Gill Sans, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  background: #fff;
+  color: #424242;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background: #161618;
+  }
+
+  body {
+    -webkit-filter: invert(1);
+  }
+}
+
+::selection {
+  color: #fff;
+  background: #424242;
 }
 
 body {
   font-size: 1em;
   margin: 0;
-  font-family: Gill Sans, sans-serif;
-  color: #424242
 }
 
 @media (max-width: 800px) {
